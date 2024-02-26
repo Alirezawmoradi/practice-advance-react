@@ -10,8 +10,7 @@ const Login = () => {
                             <div className='table-cell align-middle'>
                                 <div className='text-center mt-4'>
                                     <img src={logo} style={{height: '100px'}}/>
-                                    <h1 className='text-center font-medium text-lg'>پلتفرم آموزش
-                                        آنلاین</h1>
+                                    <h1 className='text-center font-medium text-lg'>پلتفرم آموزش آنلاین</h1>
                                 </div>
                             </div>
                         </div>

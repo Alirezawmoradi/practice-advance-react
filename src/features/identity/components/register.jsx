@@ -1,4 +1,5 @@
 import logo from "@assets/images/logo.svg";
+import {Link} from "react-router-dom";
 
 const Register = () => {
     return (
@@ -15,7 +16,7 @@ const Register = () => {
                     </p>
                     <p className='leading-normal mt-4 text-base font-light text-gray-500'>
                         قبلا ثبت نام کرده اید؟
-                        <a className='me-2 text-blue-600 mr-2' href='/login'>وارد شوید</a>
+                        <Link className='me-2 text-blue-600 mr-2' to='/login'>وارد شوید</Link>
                     </p>
                 </div>
                 <div

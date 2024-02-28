@@ -1,6 +1,7 @@
 import logo from "@assets/images/logo.svg";
-import {Link, useSubmit} from "react-router-dom";
+import {Link, useActionData, useNavigate, useNavigation, useRouteError, useSubmit} from "react-router-dom";
 import {useForm} from "react-hook-form";
+import {useEffect} from "react";
 
 const Register = () => {
     const {
@@ -16,6 +17,23 @@ const Register = () => {
             method: 'POST'
         })
     };
+    const navigation = useNavigation();
+    const isSubmitting = navigation.state !== 'idle';
+
+    const isSuccessOperation = useActionData();
+
+    const navigate = useNavigate();
+
+    const routeErrors = useRouteError();
+
+    useEffect(() => {
+        if (isSuccessOperation) {
+            setTimeout(() => {
+                navigate('/login')
+            }, 2000)
+        }
+    }, [isSuccessOperation])
+
     return (
         <>
             <div className='table-cell align-middle'>
@@ -114,12 +132,34 @@ const Register = () => {
                                 </div>
                                 <div className='mb-3 text-center'>
                                     <button type="submit"
-                                            className="mt-3 text-gray-200 border rounded-md w-32 h-8"
+                                            className={`inline-block font-light text-sm mt-3 text-gray-200 border rounded-md w-32 h-8 ${isSubmitting && 'bg-blue-200'}`}
                                             style={{
                                                 backgroundColor: '#3f80ea',
                                                 borderColor: '#3f80ea'
-                                            }}>ثبت نام کنید
+                                            }}
+                                            disabled={isSubmitting}
+                                    >{
+                                        isSubmitting ? 'در حال انجام عملیات' : 'ثبت نام کنید'
+                                    }
                                     </button>
+                                    {
+                                        isSuccessOperation && (
+                                            <div
+                                                className='rounded-md bg-green-100 w-full h-full text-green-500 text-sm font-light p-2 mt-3'>
+                                                عملیات با موفقیت انجام شد. به صفحه ورود
+                                                منتقل می شوید
+                                            </div>
+                                        )
+                                    }
+                                    {
+                                        routeErrors && (
+                                            <div className='rounded-md bg-red-100 w-full h-full text-red-500 text-sm font-light p-2 mt-3'>
+                                                {
+                                                    routeErrors.response.data.map((error)=><p className='mb-0'>{error.description}</p>)
+                                                }
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </form>
                         </div>

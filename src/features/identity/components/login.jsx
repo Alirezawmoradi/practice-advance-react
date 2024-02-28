@@ -37,7 +37,7 @@ const Login = () => {
                                         type='password'/>
                                 </div>
                                 <div className='mb-3 text-center'>
-                                    <button type="submit" className="mt-3 text-gray-200 border rounded-md w-32 h-8"
+                                    <button type="submit" className="inline-block font-light text-sm mt-3 text-gray-200 border rounded-md w-32 h-8"
                                             style={{backgroundColor: '#3f80ea', borderColor: '#3f80ea'}}>وارد شوید
                                     </button>
                                 </div>

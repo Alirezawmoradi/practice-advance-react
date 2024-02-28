@@ -1,7 +1,15 @@
 import logo from "@assets/images/logo.svg";
 import {Link} from "react-router-dom";
+import {useForm} from "react-hook-form";
 
 const Register = () => {
+    const {
+        register,
+        formState: {errors},
+        handleSubmit,
+        watch
+    } = useForm()
+    const onSubmit = data => console.log(data);
     return (
         <>
             <div className='table-cell align-middle'>
@@ -23,19 +31,27 @@ const Register = () => {
                     className='mb-4 shadow relative flex flex-col min-w-0 break-words bg-white border bg-clip-border mt-5 rounded-lg'>
                     <div className='flex-auto p-2 block box-border'>
                         <div className='m-6 block box-bordex'>
-                            <form>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className='mb-3'>
                                     <label
                                         className='inline-block box-border cursor-default text-gray-500 mb-2'>موبایل</label>
                                     <input
-                                        className='min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 focus:outline-blue-300 bg-blue-100 border border-gray-300 rounded-md block w-full font-medium'/>
+                                        {...register('mobile', {
+                                            required: 'موبایل الزامی است',
+                                            minLength: 11,
+                                            maxLength: 11
+                                        })}
+                                        className={`${errors.mobile ? 'min-h-1 py-1 outline-offset-2 focus:outline-red-200 bg-white border-red-500' : 'min-h-1 py-1 outline-offset-2 focus:outline-blue-200 bg-blue-100 border focus:border-blue-500'} min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 bg-white border border-gray-300 rounded-md block w-full font-medium`}/>
                                 </div>
                                 <div className='mb-3'>
                                     <label
                                         className='inline-block box-border cursor-default text-gray-500 mb-2'>رمز
                                         عبور</label>
                                     <input
-                                        className='min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 focus:outline-blue-300 bg-blue-100 border border-gray-300 rounded-md block w-full font-medium'
+                                        {...register('password', {
+                                            required: 'رمز عبور الزامی است'
+                                        })}
+                                        className={`${errors.password ? 'min-h-1 py-1 outline-offset-2 focus:outline-red-200 bg-white border-red-500' : 'min-h-1 py-1 outline-offset-2 focus:outline-blue-200 bg-blue-100 border focus:border-blue-500'} min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 bg-white border border-gray-300 rounded-md block w-full font-medium`}
                                         type='password'/>
                                 </div>
                                 <div className='mb-3'>
@@ -43,7 +59,15 @@ const Register = () => {
                                         className='inline-block box-border cursor-default text-gray-500 mb-2'>تکرار
                                         رمز عبور</label>
                                     <input
-                                        className='min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 focus:outline-blue-300 bg-blue-100 border border-gray-300 rounded-md block w-full font-medium'
+                                        {...register('confirmPassword', {
+                                            required: 'تکرار رمز عبور الزامی است',
+                                            validate: value => {
+                                                if (watch('password') !== value) {
+                                                    return 'عدم تطابق با رمز وارد شده'
+                                                }
+                                            }
+                                        })}
+                                        className={`${errors.confirmPassword ? 'min-h-1 py-1 outline-offset-2 focus:outline-red-200 bg-white border-red-500' : 'min-h-1 py-1 outline-offset-2 focus:outline-blue-200 bg-blue-100 border focus:border-blue-500'} min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 bg-white border border-gray-300 rounded-md block w-full font-medium`}
                                         type='password'/>
                                 </div>
                                 <div className='mb-3 text-center'>

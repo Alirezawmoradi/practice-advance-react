@@ -2,6 +2,7 @@ import logo from "@assets/images/logo.svg";
 import {Link, useActionData, useNavigate, useNavigation, useRouteError, useSubmit} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useEffect} from "react";
+import {useTranslation} from "react-i18next";
 
 const Register = () => {
     const {
@@ -26,6 +27,8 @@ const Register = () => {
 
     const routeErrors = useRouteError();
 
+    const {t} = useTranslation();
+
     useEffect(() => {
         if (isSuccessOperation) {
             setTimeout(() => {
@@ -41,14 +44,15 @@ const Register = () => {
                     <div className='flex justify-center'>
                         <img src={logo} style={{height: '100px'}}/>
                     </div>
-                    <h1 className='text-center text-xl font-extrabold text-gray-600'>پلتفرم آموزش
-                        آنلاین</h1>
+                    <h1 className='text-center text-xl font-extrabold text-gray-600'>
+                        {t('register.title')}
+                    </h1>
                     <p className='leading-normal mt-4 text-base font-light text-gray-500'>
-                        جهت استفاده از ویژگی های پلتفرم آموزش آنلاین کلاسبن ثبت نام کنید
+                        {t('register.introMessage')}
                     </p>
                     <p className='leading-normal mt-4 text-base font-light text-gray-500'>
-                        قبلا ثبت نام کرده اید؟
-                        <Link className='me-2 text-blue-600 mr-2' to='/login'>وارد شوید</Link>
+                        {t('register.alreadyRegistered')}
+                        <Link className='me-2 text-blue-600 mr-2' to='/login'>{t('register.signin')}{" "}</Link>
                     </p>
                 </div>
                 <div
@@ -58,10 +62,12 @@ const Register = () => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className='mb-3'>
                                     <label
-                                        className='inline-block box-border cursor-default text-gray-500 mb-2'>موبایل</label>
+                                        className='inline-block box-border cursor-default text-gray-500 mb-2'>
+                                        {t('register.mobile')}
+                                    </label>
                                     <input
                                         {...register('mobile', {
-                                            required: 'موبایل الزامی است',
+                                            required: t('register.validation.mobileRequired'),
                                             minLength: 11,
                                             maxLength: 11
                                         })}
@@ -77,18 +83,19 @@ const Register = () => {
                                     (errors.mobile.type === 'minLength'
                                         || errors.mobile.type === 'maxLength') && (
                                         <p className='text-red-700 font-light text-xs mt-1'>
-                                            موبایل باید 11 رقم باشد
+                                            {t('register.validation.mobileLength')}
                                         </p>
                                     )
                                 }
                                 </div>
                                 <div className='mb-3'>
                                     <label
-                                        className='inline-block box-border cursor-default text-gray-500 mb-2'>رمز
-                                        عبور</label>
+                                        className='inline-block box-border cursor-default text-gray-500 mb-2'>
+                                        {t('register.password')}
+                                    </label>
                                     <input
                                         {...register('password', {
-                                            required: 'رمز عبور الزامی است'
+                                            required: t('register.validation.passwordRequired')
                                         })}
                                         className={`${errors.password ? 'min-h-1 py-1 outline-offset-2 focus:outline-red-200 bg-white border-red-500' : 'min-h-1 py-1 outline-offset-2 focus:outline-blue-200 bg-blue-100 border focus:border-blue-500'} min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 bg-white border border-gray-300 rounded-md block w-full font-medium`}
                                         type='password'/>
@@ -102,14 +109,15 @@ const Register = () => {
                                 </div>
                                 <div className='mb-3'>
                                     <label
-                                        className='inline-block box-border cursor-default text-gray-500 mb-2'>تکرار
-                                        رمز عبور</label>
+                                        className='inline-block box-border cursor-default text-gray-500 mb-2'>
+                                        {t('register.repeatPassword')}
+                                    </label>
                                     <input
                                         {...register('confirmPassword', {
-                                            required: 'تکرار رمز عبور الزامی است',
+                                            required: t('register.validation.repeatPasswordRequired'),
                                             validate: value => {
                                                 if (watch('password') !== value) {
-                                                    return 'عدم تطابق با رمز وارد شده'
+                                                    return t('regiter.validation.notMatching')
                                                 }
                                             }
                                         })}
@@ -139,23 +147,24 @@ const Register = () => {
                                             }}
                                             disabled={isSubmitting}
                                     >{
-                                        isSubmitting ? 'در حال انجام عملیات' : 'ثبت نام کنید'
+                                        isSubmitting ? t('register.saving') : t('register.register')
                                     }
                                     </button>
                                     {
                                         isSuccessOperation && (
                                             <div
                                                 className='rounded-md bg-green-100 w-full h-full text-green-500 text-sm font-light p-2 mt-3'>
-                                                عملیات با موفقیت انجام شد. به صفحه ورود
-                                                منتقل می شوید
+                                                {t('register.successOperation')}
                                             </div>
                                         )
                                     }
                                     {
                                         routeErrors && (
-                                            <div className='rounded-md bg-red-100 w-full h-full text-red-500 text-sm font-light p-2 mt-3'>
+                                            <div
+                                                className='rounded-md bg-red-100 w-full h-full text-red-500 text-sm font-light p-2 mt-3'>
                                                 {
-                                                    routeErrors.response.data.map((error)=><p className='mb-0'>{error.description}</p>)
+                                                    routeErrors.response.data.map((error) => <p
+                                                        className='mb-0'>{error.description}</p>)
                                                 }
                                             </div>
                                         )

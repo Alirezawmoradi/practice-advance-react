@@ -1,5 +1,5 @@
 import logo from "@assets/images/logo.svg";
-import {Link} from "react-router-dom";
+import {Link, useSubmit} from "react-router-dom";
 import {useForm} from "react-hook-form";
 
 const Register = () => {
@@ -9,7 +9,13 @@ const Register = () => {
         handleSubmit,
         watch
     } = useForm()
-    const onSubmit = data => console.log(data);
+    const submitForm = useSubmit();
+    const onSubmit = data => {
+        const {confirmPassword, ...userData} = data;
+        submitForm(userData, {
+            method: 'POST'
+        })
+    };
     return (
         <>
             <div className='table-cell align-middle'>
@@ -107,7 +113,7 @@ const Register = () => {
                                     }
                                 </div>
                                 <div className='mb-3 text-center'>
-                                <button type="submit"
+                                    <button type="submit"
                                             className="mt-3 text-gray-200 border rounded-md w-32 h-8"
                                             style={{
                                                 backgroundColor: '#3f80ea',

@@ -5,7 +5,7 @@ const IdentityLayout = () => {
     return (
         <>
             <div className='min-h-full min-w-0 flex flex-col justify-center w-full'>
-                <nav className='border-b-0 shadow-sm justify-start gap-3'>
+                <nav className='border-b-0 shadow-sm justify-start gap-3 align-middle py-4'>
                     <ChangeLanguage/>
                 </nav>
                 <main className='flex p-0'>

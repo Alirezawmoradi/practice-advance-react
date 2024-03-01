@@ -4,8 +4,8 @@ import ChangeLanguage from "../components/change-language.jsx";
 const IdentityLayout = () => {
     return (
         <>
-            <div className='flex justify-center w-screen'>
-                <nav className='border-b-0 shadow-sm'>
+            <div className='min-h-full min-w-0 flex flex-col justify-center w-full'>
+                <nav className='border-b-0 shadow-sm justify-start gap-3'>
                     <ChangeLanguage/>
                 </nav>
                 <main className='flex p-0'>

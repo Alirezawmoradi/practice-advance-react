@@ -1,13 +1,38 @@
 import usFlag from '@assets/images/us.png';
 import faFlag from '@assets/images/fa.png';
+import {useEffect, useRef, useState} from "react";
 
 const ChangeLanguage = () => {
+    const [show, setShow] = useState(false);
+    const ref = useRef();
+
+    useEffect(() => {
+
+        const checkIfClickOutside = (e) => {
+            if (show && ref.current && !ref.current.contains(e.target)) {
+                setShow(false)
+            }
+        }
+
+        document.addEventListener('mousedown', checkIfClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', checkIfClickOutside);
+        }
+
+    }, [show]);
+
     return (
         <div className='relative mr-5'>
-            <a className='mt-0.5 font-light transition-all delay-1000 ease-in-out leading-snug whitespace-nowrap'>
-                <img src={usFlag} alt='English' className='rounded-full border border-gray-100 w-7 h-7'/>
+            <a className='mt-0.5 font-light transition-all delay-1000 ease-in-out leading-snug whitespace-nowrap cursor-pointer'
+               onClick={() => setShow(true)}>
+                <img src={usFlag} alt='English'
+                     className='rounded-full border border-gray-100 w-7 h-7'/>
             </a>
-            <div className='block top-auto absolute z-auto min-w-40 p-2 m-0 font-light text-left list-none bg-clip-padding border rounded-md bg-white'>
+            <div
+                className={`${show ? 'block' : 'hidden'} top-auto absolute z-auto min-w-40 p-2 m-0 font-light text-left list-none bg-clip-padding border rounded-md bg-white`}
+                ref={ref}
+            >
                 <a className='flex items-center gap-2 text-center hover:bg-gray-100 hover:text-gray-800 cursor-pointer mb-2 mr-3'>
                     <img src={faFlag} width='20px'/>
                     <span className='align-middle font-bold text-gray-500 text-sm'>فارسی</span>

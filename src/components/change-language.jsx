@@ -39,13 +39,13 @@ const ChangeLanguage = () => {
                 <a className='flex items-center gap-2 text-center hover:bg-gray-100 hover:text-gray-800 cursor-pointer mb-2 mr-3'
                    onClick={() => changeLanguage('fa')}
                 >
-                    <img src={faFlag} width='20px'/>
+                    <img src={faFlag} width='20px' alt='Persian'/>
                     <span className='align-middle font-bold text-gray-500 text-sm'>فارسی</span>
                 </a>
                 <a className='flex items-center gap-2 text-center hover:bg-gray-100 cursor-pointer mb-2 hover:text-gray-800 mr-3'
                    onClick={() => changeLanguage('en')}
                 >
-                    <img src={usFlag} width='20px'/>
+                    <img src={usFlag} width='20px' alt='English'/>
                     <span className='align-middle font-bold text-gray-500 text-sm'>English</span>
                 </a>
             </div>

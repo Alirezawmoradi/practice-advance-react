@@ -1,5 +1,6 @@
-import {createContext, useContext, useReducer} from "react";
+import {createContext, useContext, useEffect, useReducer} from "react";
 import appReducer from "./app-reducer.js";
+import {useTranslation} from "react-i18next";
 
 const AppContext = createContext();
 
@@ -9,10 +10,16 @@ const initialState = {
 
 const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(appReducer, initialState);
+    const {i18n} = useTranslation();
 
     const changeLanguage = (language) => {
         dispatch({type: 'CHANGE_LANGUAGE', payload: language})
     }
+
+    useEffect(() => {
+        i18n.changeLanguage(state.language);
+        localStorage.setItem('language', state.language);
+    }, [state.language]);
 
     return <AppContext.Provider value={{...state, changeLanguage}}>
         {children}

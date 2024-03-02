@@ -33,7 +33,7 @@ const ChangeLanguage = () => {
                      className='rounded-full border border-gray-100 w-7 h-7'/>
             </a>
             <div
-                className={`${show ? 'block' : 'hidden'} top-auto absolute z-auto min-w-40 p-2 m-0 font-light text-left list-none bg-clip-padding border rounded-md bg-white`}
+                className={`${show ? 'block' : 'hidden'} ${language==='fa'?'text-right':'text-left'} top-auto absolute z-auto min-w-40 p-2 m-0 font-light text-left list-none bg-clip-padding border rounded-md bg-white`}
                 ref={ref}
             >
                 <a className='flex items-center gap-2 text-center hover:bg-gray-100 hover:text-gray-800 cursor-pointer mb-2 mr-3'

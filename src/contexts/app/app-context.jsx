@@ -19,6 +19,7 @@ const AppProvider = ({children}) => {
     useEffect(() => {
         i18n.changeLanguage(state.language);
         localStorage.setItem('language', state.language);
+        document.body.dir = state.language === 'fa' ? 'rtl' : 'ltr'
     }, [state.language]);
 
     return <AppContext.Provider value={{...state, changeLanguage}}>

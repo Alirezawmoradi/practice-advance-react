@@ -52,14 +52,35 @@
     src: url(public/fonts/iranyekan/woff2/iranyekanwebextrablack.woff2) format("woff2")
 }
 
-:root {
-    --bs-font-sans-serif: IranSans;
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-gradient: linear-gradient(180deg, hsla(0, 0%, 100%, .15), hsla(0, 0%, 100%, 0))
+
+
+
+@layer base{
+    :root {
+        --bs-font-sans-serif: IranSans;
+        --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        --bs-gradient: linear-gradient(180deg, hsla(0, 0%, 100%, .15), hsla(0, 0%, 100%, 0))
+    }
+    body {
+        font-family: iranyekan, serif;
+        font-size: 1rem;
+        font-weight: 400;
+    }
 }
 
-body {
-    font-family: iranyekan, serif;
-    font-size: 1rem;
-    font-weight: 400;
+.dropdownAnimation {
+    animation-duration: 0.5s;
+    animation: dropdown-animation;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+}
+
+@keyframes dropdown-animation {
+    0% {
+        @apply opacity-0 transform -translate-y-32
+    }
+    100% {
+        @apply opacity-100 transform translate-y-0
+    }
 }

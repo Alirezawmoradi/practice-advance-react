@@ -5,7 +5,9 @@ import './core/i18n.js';
 function App() {
 
     return (
-        <RouterProvider router={router}/>
+        <div className='bg-light dark:bg-dark'>
+            <RouterProvider router={router}/>
+        </div>
     )
 }
 

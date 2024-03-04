@@ -1,11 +1,13 @@
 import {Outlet} from "react-router-dom";
 import ChangeLanguage from "../components/change-language.jsx";
+import ChangeTheme from "../components/change-theme.jsx";
 
 const IdentityLayout = () => {
     return (
         <>
             <div className='min-h-full min-w-0 flex flex-col justify-center w-full'>
-                <nav className='border-b-0 shadow-sm justify-start gap-3 align-middle py-4'>
+                <nav className=' flex border-b-0 shadow-sm justify-start gap-2 align-middle py-4'>
+                    <ChangeTheme/>
                     <ChangeLanguage/>
                 </nav>
                 <main className='flex p-0'>

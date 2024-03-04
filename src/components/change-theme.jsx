@@ -1,4 +1,10 @@
+import {useAppContext} from "../contexts/app/app-context.jsx";
+
 const ChangeTheme = () => {
+    const {theme, changeTheme} = useAppContext();
+    const changeThemeHandler = () => {
+        changeTheme(theme === 'light' ? 'dark' : 'light')
+    }
     return (
         <div className="flex flex-col justify-center ml-3 mr-5">
             <input
@@ -6,14 +12,9 @@ const ChangeTheme = () => {
                 name="light-switch"
                 className="light-switch sr-only"
                 // checked={theme === 'light'}
-                // onChange={() => {
-                //     if (theme === 'dark') {
-                //         return setTheme('light')
-                //     }
-                //     return setTheme('dark')
-                // }}
             />
-            <label className="relative cursor-pointer p-2" htmlFor="light-switch">
+            <label className="relative cursor-pointer p-2" htmlFor="light-switch" data-theme={theme}
+                   onChange={changeThemeHandler}>
                 <svg className="dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                     <path
                         className="fill-slate-300"

@@ -18,7 +18,7 @@ const ChangeTheme = () => {
                 className='absolute bg-white dark:bg-dark w-6 h-6 rounded-full shadow-md transform transition-transform duration-300'
                 style={theme === 'dark' ? {left: '2px'} : {right: '2px'}}>
             </div>
-            <BsSunFill className={`${language==='fa'?'mr-auto':'ml-auto'} text-blue-500 hover:text-black`} size={18}/>
+            <BsSunFill className={`${language==='fa'?'mr-auto':'ml-auto'} hover:text-blue-500 text-white`} size={18}/>
         </div>
     )
 }

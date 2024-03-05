@@ -11,6 +11,7 @@ const ChangeTheme = () => {
         <div
             className={`relative w-16 h-8 flex items-center dark:bg-gray-900 bg-teal-500 cursor-pointer rounded-full p-1 ${language === 'fa' ? 'mr-6' : 'ml-6'}`}
             onClick={changeThemeHandler}
+            data-theme={theme}
         >
             <FaMoon className='hover:text-gray-400 text-yellow-400' size={18}/>
             <div

@@ -15,10 +15,10 @@ const ChangeTheme = () => {
         >
             <FaMoon className='hover:text-gray-400 text-yellow-400' size={18}/>
             <div
-                className='absolute bg-white dark:bg-dark w-6 h-6 rounded-full shadow-md transform transition-transform duration-300'
+                className={`absolute bg-white dark:bg-dark w-6 h-6 rounded-full shadow-md transform transition-transform duration-1000 ${theme==='dark'?'translate-x-0.5':'-translate-x-0.5'}`}
                 style={theme === 'dark' ? {left: '2px'} : {right: '2px'}}>
             </div>
-            <BsSunFill className={`${language==='fa'?'mr-auto':'ml-auto'} hover:text-blue-500 text-white`} size={18}/>
+            <BsSunFill className={`${language==='fa'?'mr-auto':'ml-auto'} hover:text-blue-500 text-white pl-0.5`} size={18}/>
         </div>
     )
 }

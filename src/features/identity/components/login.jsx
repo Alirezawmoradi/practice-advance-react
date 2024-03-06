@@ -1,5 +1,5 @@
 import logo from '@assets/images/logo.svg';
-import {Link} from "react-router-dom";
+import {Link, useNavigation, useRouteError, useSubmit} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useForm} from "react-hook-form";
 
@@ -12,11 +12,19 @@ const Login = () => {
         formState: {errors},
         handleSubmit,
         watch
-    } = useForm()
+    } = useForm();
+
+    const submitForm = useSubmit()
 
     const onSubmit = data => {
-        console.log(data)
+        submitForm(data, {method: 'POST'});
     };
+
+    const navigation = useNavigation();
+
+    const isSubmitting = navigation.state !== 'idle';
+
+    const routeErrors = useRouteError();
 
     return (
         <>
@@ -31,7 +39,8 @@ const Login = () => {
                     </p>
                     <p className='leading-normal mt-4 text-base font-light text-gray-500 dark:text-gray-400'>
                         {t('login.areNotRegistered')}
-                        <Link className='me-2 text-blue-600 dark:text-blue-500 mr-2' to='/register'>{t('login.register')} </Link>
+                        <Link className='me-2 text-blue-600 dark:text-blue-500 mr-2'
+                              to='/register'>{t('login.register')} </Link>
                     </p>
                 </div>
                 <div
@@ -88,10 +97,27 @@ const Login = () => {
                                 </div>
                                 <div className='mb-3 text-center'>
                                     <button type="submit"
-                                            className="inline-block font-light text-sm mt-3 text-gray-200 border rounded-md w-32 h-8"
-                                            style={{backgroundColor: '#3f80ea', borderColor: '#3f80ea'}}>
-                                        {t('login.signin')}
+                                            className={`inline-block font-light text-sm mt-3 text-gray-200 border rounded-md w-32 h-8 ${isSubmitting && 'bg-blue-200'}`}
+                                            style={{
+                                                backgroundColor: '#3f80ea',
+                                                borderColor: '#3f80ea'
+                                            }}
+                                            disabled={isSubmitting}
+                                    >{
+                                        isSubmitting ? t('login.signingin') : t('login.signin')
+                                    }
                                     </button>
+                                    {
+                                        routeErrors && (
+                                            <div
+                                                className='rounded-md bg-red-100 w-full h-full text-red-500 text-sm font-light p-2 mt-3'>
+                                                {
+                                                    routeErrors.response.data.map((error) => <p
+                                                        className='mb-0'>{t(`login.validation.${error.code}`)}</p>)
+                                                }
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </form>
                         </div>

@@ -74,7 +74,7 @@ const Register = () => {
                                         className={`${errors.mobile ? 'min-h-1 py-1 outline-offset-2 focus:outline-red-200 bg-white border-red-500' : 'min-h-1 py-1 outline-offset-2 focus:outline-blue-200 bg-blue-100 border focus:border-blue-500'} min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 bg-white border border-gray-300 rounded-md block w-full font-medium`}/>
                                     {
                                         errors.mobile && errors.mobile.type === 'required' && (
-                                            <p className='text-red-700 font-light text-xs mt-1'>
+                                            <p className='text-red-700 dark:text-red-500 font-light text-xs mt-1'>
                                                 {errors.mobile?.message}
                                             </p>
                                         )
@@ -82,7 +82,7 @@ const Register = () => {
                                     errors.mobile &&
                                     (errors.mobile.type === 'minLength'
                                         || errors.mobile.type === 'maxLength') && (
-                                        <p className='text-red-700 font-light text-xs mt-1'>
+                                        <p className='text-red-700 dark:text-red-500 font-light text-xs mt-1'>
                                             {t('register.validation.mobileLength')}
                                         </p>
                                     )
@@ -101,7 +101,7 @@ const Register = () => {
                                         type='password'/>
                                     {
                                         errors.password && errors.password.type === 'required' && (
-                                            <p className='text-red-700 font-light text-xs mt-1'>
+                                            <p className='text-red-700 dark:text-red-500 font-light text-xs mt-1'>
                                                 {errors.password?.message}
                                             </p>
                                         )
@@ -125,14 +125,14 @@ const Register = () => {
                                         type='password'/>
                                     {
                                         errors.confirmPassword && errors.confirmPassword.type === 'required' && (
-                                            <p className='text-red-700 font-light text-xs mt-1'>
+                                            <p className='text-red-700 dark:text-red-500 font-light text-xs mt-1'>
                                                 {errors.confirmPassword?.message}
                                             </p>
                                         )
                                     }
                                     {
                                         errors.confirmPassword && errors.confirmPassword.type === 'validate' && (
-                                            <p className='text-red-700 font-light text-xs mt-1'>
+                                            <p className='text-red-700 dark:text-red-500 font-light text-xs mt-1'>
                                                 {errors.confirmPassword?.message}
                                             </p>
                                         )

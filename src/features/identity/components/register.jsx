@@ -164,7 +164,7 @@ const Register = () => {
                                                 className='rounded-md bg-red-100 w-full h-full text-red-500 text-sm font-light p-2 mt-3'>
                                                 {
                                                     routeErrors.response.data.map((error) => <p
-                                                        className='mb-0'>{error.description}</p>)
+                                                        className='mb-0'>{t(`register.validation.${error.code}`)}</p>)
                                                 }
                                             </div>
                                         )

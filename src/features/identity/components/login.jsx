@@ -1,10 +1,22 @@
 import logo from '@assets/images/logo.svg';
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {useForm} from "react-hook-form";
 
 const Login = () => {
 
     const {t} = useTranslation();
+
+    const {
+        register,
+        formState: {errors},
+        handleSubmit,
+        watch
+    } = useForm()
+
+    const onSubmit = data => {
+        console.log(data)
+    };
 
     return (
         <>
@@ -26,20 +38,53 @@ const Login = () => {
                     className='mb-4 shadow relative flex flex-col min-w-0 break-words bg-white dark:bg-card dark:border-none border bg-clip-border mt-5 rounded-lg'>
                     <div className='flex-auto p-2 block box-border'>
                         <div className='m-6 block box-bordex'>
-                            <form>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className='mb-3'>
                                     <label
-                                        className='inline-block box-border cursor-default text-gray-500 dark:text-gray-400 mb-2'>{t('login.mobile')}</label>
-                                    <input
-                                        className='min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 focus:outline-blue-300 bg-blue-100 border border-gray-300 rounded-md block w-full font-medium'/>
-                                </div>
-                                <div className='mb-3'>
-                                    <label className='inline-block box-border cursor-default text-gray-500 dark:text-gray-400 mb-2'>
-                                        {t('login.password')}
+                                        className='inline-block box-border cursor-default text-gray-500  dark:text-gray-400 mb-2'>
+                                        {t('register.mobile')}
                                     </label>
                                     <input
-                                        className='min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 focus:outline-blue-300 bg-blue-100 border border-gray-300 rounded-md block w-full font-medium'
+                                        {...register('mobile', {
+                                            required: t('register.validation.mobileRequired'),
+                                            minLength: 11,
+                                            maxLength: 11
+                                        })}
+                                        className={`${errors.mobile ? 'min-h-1 py-1 outline-offset-2 focus:outline-red-200 bg-white border-red-500' : 'min-h-1 py-1 outline-offset-2 focus:outline-blue-200 bg-blue-100 border focus:border-blue-500'} min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 bg-white border border-gray-300 rounded-md block w-full font-medium`}/>
+                                    {
+                                        errors.mobile && errors.mobile.type === 'required' && (
+                                            <p className='text-red-700 font-light text-xs mt-1'>
+                                                {errors.mobile?.message}
+                                            </p>
+                                        )
+                                    }{
+                                    errors.mobile &&
+                                    (errors.mobile.type === 'minLength'
+                                        || errors.mobile.type === 'maxLength') && (
+                                        <p className='text-red-700 font-light text-xs mt-1'>
+                                            {t('register.validation.mobileLength')}
+                                        </p>
+                                    )
+                                }
+                                </div>
+                                <div className='mb-3'>
+                                    <label
+                                        className='inline-block box-border cursor-default text-gray-500 dark:text-gray-400 mb-2'>
+                                        {t('register.password')}
+                                    </label>
+                                    <input
+                                        {...register('password', {
+                                            required: t('register.validation.passwordRequired')
+                                        })}
+                                        className={`${errors.password ? 'min-h-1 py-1 outline-offset-2 focus:outline-red-200 bg-white border-red-500' : 'min-h-1 py-1 outline-offset-2 focus:outline-blue-200 bg-blue-100 border focus:border-blue-500'} min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 bg-white border border-gray-300 rounded-md block w-full font-medium`}
                                         type='password'/>
+                                    {
+                                        errors.password && errors.password.type === 'required' && (
+                                            <p className='text-red-700 font-light text-xs mt-1'>
+                                                {errors.password?.message}
+                                            </p>
+                                        )
+                                    }
                                 </div>
                                 <div className='mb-3 text-center'>
                                     <button type="submit"

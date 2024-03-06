@@ -42,11 +42,11 @@ const Login = () => {
                                 <div className='mb-3'>
                                     <label
                                         className='inline-block box-border cursor-default text-gray-500  dark:text-gray-400 mb-2'>
-                                        {t('register.mobile')}
+                                        {t('login.mobile')}
                                     </label>
                                     <input
                                         {...register('mobile', {
-                                            required: t('register.validation.mobileRequired'),
+                                            required: t('login.validation.mobileRequired'),
                                             minLength: 11,
                                             maxLength: 11
                                         })}
@@ -62,7 +62,7 @@ const Login = () => {
                                     (errors.mobile.type === 'minLength'
                                         || errors.mobile.type === 'maxLength') && (
                                         <p className='text-red-700 dark:text-red-500 font-light text-xs mt-1'>
-                                            {t('register.validation.mobileLength')}
+                                            {t('login.validation.mobileLength')}
                                         </p>
                                     )
                                 }
@@ -70,11 +70,11 @@ const Login = () => {
                                 <div className='mb-3'>
                                     <label
                                         className='inline-block box-border cursor-default text-gray-500 dark:text-gray-400 mb-2'>
-                                        {t('register.password')}
+                                        {t('login.password')}
                                     </label>
                                     <input
                                         {...register('password', {
-                                            required: t('register.validation.passwordRequired')
+                                            required: t('login.validation.passwordRequired')
                                         })}
                                         className={`${errors.password ? 'min-h-1 py-1 outline-offset-2 focus:outline-red-200 bg-white border-red-500' : 'min-h-1 py-1 outline-offset-2 focus:outline-blue-200 bg-blue-100 border focus:border-blue-500'} min-h-1 py-1 pl-1.5 pr-4 outline-offset-2 bg-white border border-gray-300 rounded-md block w-full font-medium`}
                                         type='password'/>

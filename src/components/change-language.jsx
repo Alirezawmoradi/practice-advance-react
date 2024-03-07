@@ -25,6 +25,12 @@ const ChangeLanguage = () => {
 
     }, [show]);
 
+    useEffect(() => {
+
+        setShow(false)
+
+    }, [language]);
+
     return (
         <div className='relative mr-5 ml-5'>
             <a className='mt-0.5 font-light transition-all delay-1000 ease-in-out leading-snug whitespace-nowrap cursor-pointer'
@@ -33,7 +39,7 @@ const ChangeLanguage = () => {
                      className='rounded-full border-gray-100 w-7 h-7'/>
             </a>
             <div
-                className={`${show ? 'block' : 'hidden'} ${language==='fa'?'text-right':'text-left'} top-auto absolute z-auto min-w-40 p-2 m-0 font-light text-left list-none bg-clip-padding border dark:border-gray-600 rounded-md bg-white dark:bg-card`}
+                className={`${show ? 'block' : 'hidden'} ${language === 'fa' ? 'text-right' : 'text-left'} top-auto absolute z-auto min-w-40 p-2 m-0 font-light text-left list-none bg-clip-padding border dark:border-gray-600 rounded-md bg-white dark:bg-card`}
                 ref={ref}
             >
                 <a className='flex items-center gap-2 text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-800 cursor-pointer mb-2 mr-3'

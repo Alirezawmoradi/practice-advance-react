@@ -5,7 +5,7 @@ import ChangeTheme from "../components/change-theme.jsx";
 const IdentityLayout = () => {
     return (
         <>
-            <div className='min-h-full min-w-0 flex flex-col justify-center w-full'>
+            <div className='min-h-screen min-w-0 flex flex-col justify-center w-full'>
                 <nav className=' flex border-b-0 shadow-sm justify-start gap-2 align-middle py-4'>
                     <ChangeTheme/>
                     <ChangeLanguage/>

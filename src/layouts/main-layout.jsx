@@ -9,8 +9,10 @@ export const MainLayout = () => {
             <div className='flex w-full min-h-screen min-w-0 flex-col'>
                 <nav
                     className='relative flex py-3.5 px-0.5 items-center border-b-0 shadow justify-start bg-white align-middle'>
-                    <a className='cursor-pointer w-6 h-6 flex'>
-                        <i className='cursor-pointer rounded-sm h-0.5 w-6 bg-gray-600 block content-none transition-all duration-1000 ease-in-out'></i>
+                    <a className='cursor-pointer w-6 h-6 flex flex-col justify-center space-y-1.5 px-5'>
+                        <span className='cursor-pointer rounded-sm h-0.5 w-5 bg-gray-600 block content-none transition-all duration-1000 ease-in-out'></span>
+                        <span className='cursor-pointer rounded-sm h-0.5 w-6 bg-gray-600 block content-none transition-all duration-1000 ease-in-out'></span>
+                        <span className='cursor-pointer rounded-sm h-0.5 w-4 bg-gray-600 block content-none transition-all duration-1000 ease-in-out'></span>
                     </a>
                 </nav>
                 <main className='p-10 flex-1'>

@@ -7,6 +7,7 @@ import {useAppContext} from "../contexts/app/app-context.jsx";
 
 export const MainLayout = () => {
     const [collapseSidebar, setCollapseSidebar] = useState(false);
+    const {language} = useAppContext();
     return (
         <div className='items-stretch flex min-h-screen'>
             <nav className={`min-w-64 max-w-64 dark:bg-card bg-light shadow-md border dark:border-none ${collapseSidebar ? 'hidden' : 'block'}`}>
@@ -24,6 +25,10 @@ export const MainLayout = () => {
                         <span
                             className='cursor-pointer rounded-sm h-0.5 w-4 bg-gray-600 block dark:bg-gray-300 content-none'></span>
                     </a>
+                    <div className={`flex items-center ${language === 'fa' ? 'mr-5' : 'ml-5'}`}>
+                        <ChangeLanguage/>
+                        <ChangeTheme/>
+                    </div>
                 </nav>
                 <main className='p-10 flex-1'>
                     <Outlet/>

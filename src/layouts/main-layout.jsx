@@ -10,8 +10,30 @@ export const MainLayout = () => {
     const {language} = useAppContext();
     return (
         <div className='items-stretch flex min-h-screen'>
-            <nav className={`min-w-64 max-w-64 dark:bg-card bg-light shadow-md border dark:border-none ${collapseSidebar ? 'hidden' : 'block'}`}>
-
+            <nav
+                className={`min-w-64 max-w-64 dark:bg-card bg-light shadow-md border dark:border-none ${collapseSidebar ? 'hidden' : 'block'}`}>
+                <div className='dark:bg-card bg-light transition ease-in-out duration-300'>
+                    <a className='text-sm font-medium py-4 px-6 text-center flex flex-col items-center pt-0 mb-0'>
+                        <img src={logo} className='h-20'/>
+                        <p className='mb-0 text-base font-bold dark:text-white text-gray-500'>پلتفرم آموزش آنلاین</p>
+                    </a>
+                    <ul className='list-none p-0'>
+                        <li className='bg-transparent text-gray-500 dark:text-gray-300 pt-6 pr-6 pl-6 pb-1.5'>
+                            مدیریت دوره ها
+                        </li>
+                        <li className='pr-6'>
+                            <a aria-current="page" className="block cursor-pointer font-medium px-2.5 py-6 relative no-underline transition-colors duration-700 text-gray-500 dark:text-gray-300" href="/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                     strokeLinejoin="round" className="h-5 w-5 align-middle me-2">
+                                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                </svg>
+                                <span className="align-middle text-gray-500 dark:text-gray-300 me-2">همه دوره ها</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <div className='flex w-full min-h-screen min-w-0 flex-col'>
                 <nav

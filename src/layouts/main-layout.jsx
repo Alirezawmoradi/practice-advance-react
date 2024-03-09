@@ -22,7 +22,7 @@ export const MainLayout = () => {
                             مدیریت دوره ها
                         </li>
                         <li className='pr-6'>
-                            <a aria-current="page" className="block cursor-pointer font-medium px-2.5 py-6 relative no-underline transition-colors duration-700 text-gray-500 dark:text-gray-300" href="/">
+                            <a aria-current="page" className="flex cursor-pointer font-medium px-2.5 py-6 relative no-underline transition-colors duration-700 text-gray-500 dark:text-gray-300" href="/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                                      strokeLinejoin="round" className="h-5 w-5 align-middle me-2">

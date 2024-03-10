@@ -7,7 +7,7 @@ function App() {
     const {theme} = useAppContext();
     return (
         <div className={`${theme}`}>
-            <div className='bg-light dark:bg-dark'>
+            <div className='bg-light dark:bg-dark transition-colors duration-500 ease-in-out'>
                 <RouterProvider router={router}/>
             </div>
         </div>

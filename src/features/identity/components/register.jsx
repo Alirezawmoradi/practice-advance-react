@@ -56,7 +56,7 @@ const Register = () => {
                     </p>
                 </div>
                 <div
-                    className='mb-4 shadow relative flex flex-col min-w-0 break-words bg-white dark:bg-card dark:border-none border bg-clip-border mt-5 rounded-lg'>
+                    className='mb-4 shadow relative flex flex-col min-w-0 break-words bg-white dark:bg-card dark:border-none border bg-clip-border mt-5 rounded-lg transition-colors duration-500 ease-in-out'>
                     <div className='flex-auto p-2 block box-border'>
                         <div className='m-6 block box-bordex'>
                             <form onSubmit={handleSubmit(onSubmit)}>

@@ -11,8 +11,8 @@ export const MainLayout = () => {
     return (
         <div className='items-stretch flex min-h-screen'>
             <nav
-                className={`min-w-64 max-w-64 dark:bg-card bg-light shadow-md border dark:border-none ${collapseSidebar ? 'hidden' : 'block'}`}>
-                <div className='dark:bg-card bg-light'>
+                className={`min-w-64 max-w-64 dark:bg-card bg-light shadow-md transition-colors duration-500 ease-in-out ${collapseSidebar ? 'hidden' : 'block'}`}>
+                <div className='dark:bg-card bg-light transition-colors duration-500 ease-in-out'>
                     <a className='text-sm font-medium py-4 px-6 text-center flex flex-col items-center pt-0 mb-0'>
                         <img src={logo} className='h-20'/>
                         <p className='mb-0 text-base font-bold dark:text-white text-gray-500'>پلتفرم آموزش آنلاین</p>
@@ -137,7 +137,7 @@ export const MainLayout = () => {
             </nav>
             <div className='flex w-full min-h-screen min-w-0 flex-col'>
                 <nav
-                    className='relative flex py-3.5 px-0.5 items-center border-b-0 shadow justify-start bg-white dark:bg-dark align-middle'>
+                    className='relative flex py-3.5 px-0.5 items-center border-b-0 shadow justify-start bg-white dark:bg-dark align-middle transition-colors duration-500 ease-in-out'>
                     <a className='cursor-pointer w-6 h-6 flex flex-col justify-center space-y-1.5 px-5'
                        onClick={() => setCollapseSidebar(!collapseSidebar)}>
                         <span
@@ -156,7 +156,7 @@ export const MainLayout = () => {
                     <Outlet/>
                 </main>
                 <footer
-                    className='block bg-white dark:bg-dark dark:border-gray-700 border-t border-solid border-b-gray-200 p-4'>
+                    className='block bg-white dark:bg-dark dark:border-gray-700 border-t border-solid border-b-gray-200 p-4 transition-colors duration-500 ease-in-out'>
 
                 </footer>
             </div>

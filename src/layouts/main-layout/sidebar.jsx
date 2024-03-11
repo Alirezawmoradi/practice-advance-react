@@ -1,5 +1,4 @@
 import logo from "@assets/images/logo.svg";
-import {useState} from "react";
 import {useAppContext} from "../../contexts/app/app-context.jsx";
 
 export const Sidebar = () => {

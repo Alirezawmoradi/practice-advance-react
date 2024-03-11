@@ -1,10 +1,12 @@
 import logo from "@assets/images/logo.svg";
 import {useState} from "react";
+import {useAppContext} from "../../contexts/app/app-context.jsx";
 
 export const Sidebar = () => {
+    const {showSidebar}=useAppContext();
     return (
         <nav
-            className={`min-w-64 max-w-64 dark:bg-card bg-light shadow-md transition-colors duration-500 ease-in-out ${collapseSidebar ? 'hidden' : 'block'}`}>
+            className={`min-w-64 max-w-64 dark:bg-card bg-light shadow-md transition-colors duration-500 ease-in-out ${!showSidebar ? 'hidden' : 'block'}`}>
             <div className='dark:bg-card bg-light transition-colors duration-500 ease-in-out'>
                 <a className='text-sm font-medium py-4 px-6 text-center flex flex-col items-center pt-0 mb-0'>
                     <img src={logo} className='h-20'/>

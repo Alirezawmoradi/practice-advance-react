@@ -1,19 +1,21 @@
 import logo from "@assets/images/logo.svg";
 import {useAppContext} from "../../contexts/app/app-context.jsx";
+import {useTranslation} from "react-i18next";
 
 export const Sidebar = () => {
-    const {showSidebar}=useAppContext();
+    const {showSidebar} = useAppContext();
+    const {t} = useTranslation();
     return (
         <nav
             className={`min-w-64 max-w-64 dark:bg-card bg-light shadow-md transition-colors duration-500 ease-in-out ${!showSidebar ? 'hidden' : 'block'}`}>
             <div className='dark:bg-card bg-light transition-colors duration-500 ease-in-out'>
                 <a className='text-sm font-medium py-4 px-6 text-center flex flex-col items-center pt-0 mb-0'>
                     <img src={logo} className='h-20'/>
-                    <p className='mb-0 text-base font-bold dark:text-white text-gray-500'>پلتفرم آموزش آنلاین</p>
+                    <p className='mb-0 text-base font-bold dark:text-white text-gray-500'>{t('mainLayout.sidebar.subtitle')}</p>
                 </a>
                 <ul className='list-none p-0'>
                     <li className='bg-transparent text-gray-500 dark:text-gray-300 pt-6 pr-6 pl-6 pb-1.5'>
-                        مدیریت دوره ها
+                        {t('mainLayout.sidebar.courseManagement')}
                     </li>
                     <li className='pr-6'>
                         <a aria-current="page"
@@ -26,7 +28,7 @@ export const Sidebar = () => {
                                 <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                             </svg>
                             <span
-                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">همه دوره ها</span>
+                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">{t('mainLayout.sidebar.allCourses')}</span>
                         </a>
                     </li>
                     <li className='pr-6'>
@@ -40,7 +42,7 @@ export const Sidebar = () => {
                                 <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                             </svg>
                             <span
-                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">دسته بندی دوره ها</span>
+                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">{t('mainLayout.sidebar.coursesCategory')}</span>
                         </a>
                     </li>
                     <li className='pr-6'>
@@ -55,11 +57,11 @@ export const Sidebar = () => {
                                 <circle cx="17.5" cy="17.5" r="2.5"></circle>
                             </svg>
                             <span
-                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">تخفیف دوره ها</span>
+                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">{t('mainLayout.sidebar.courseDiscount')}</span>
                         </a>
                     </li>
                     <li className='bg-transparent text-gray-500 dark:text-gray-300 pt-3 pr-6 pl-6 pb-1.5'>
-                        مدیریت کاربرها
+                        {t('mainLayout.sidebar.userManagement')}
                     </li>
                     <li className='pr-6'>
                         <a aria-current="page"
@@ -72,7 +74,7 @@ export const Sidebar = () => {
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
                             <span
-                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">مدیریت مدرس ها</span>
+                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">{t('mainLayout.sidebar.teacherManagement')}</span>
                         </a>
                     </li>
                     <li className='pr-6'>
@@ -88,11 +90,11 @@ export const Sidebar = () => {
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                             <span
-                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">مدیریت دانشجوها</span>
+                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">{t('mainLayout.sidebar.studentManagement')}</span>
                         </a>
                     </li>
                     <li className='bg-transparent text-gray-500 dark:text-gray-300 pt-7 pr-6 pl-6 pb-1.5'>
-                        مدیریت بلاگ
+                        {t('mainLayout.sidebar.blogManagement')}
                     </li>
                     <li className='pr-6'>
                         <a aria-current="page"
@@ -106,7 +108,7 @@ export const Sidebar = () => {
                                 <line x1="7" y1="7" x2="7.01" y2="7"></line>
                             </svg>
                             <span
-                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">مدیریت تگ ها</span>
+                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">{t('mainLayout.sidebar.tagManagement')}</span>
                         </a>
                     </li>
                     <li className='pr-6'>
@@ -123,7 +125,7 @@ export const Sidebar = () => {
                                 <polyline points="10 9 9 9 8 9"></polyline>
                             </svg>
                             <span
-                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">مدیریت پست ها</span>
+                                className="align-middle text-gray-500 dark:text-gray-400 me-2 dark:hover:text-gray-100 hover:text-gray-800">{t('mainLayout.sidebar.postManagement')}</span>
                         </a>
                     </li>
                 </ul>
